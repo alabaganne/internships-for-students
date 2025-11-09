@@ -15,7 +15,6 @@ class Internship extends Model
         'title',
         'description',
         'company_id',
-        'company_supervisor_id',
         'field_id',
 		'city_id',
         'attachments',
@@ -39,10 +38,6 @@ class Internship extends Model
 	public function city() {
 		return $this->belongsTo(City::class);
 	}
-
-    public function companySupervisor() {
-        return $this->belongsTo(CompanySupervisor::class);
-    }
 
     public function skills() {
         return $this->morphToMany(Skill::class, 'skillable');

@@ -18,7 +18,7 @@
 				</card>
 			</template>
 		</div>
-		<div v-if="!currentUser.userable_type.includes('supervisor')" class="mt-5 max-w-5xl">
+		<div class="mt-5 max-w-5xl">
 			<card v-if="applications" title="Recent Applications" subtitle="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
 				<div v-if="applications.length > 0" class="divide-y">
 					<application-card v-for="application in applications" :key="application.id" :application="application" />
@@ -45,7 +45,7 @@ export default {
 	},
 	props: {
 		internships_count: Number,
-		university_supervisors_count: Number,
+		students_count: Number,
 		companies_count: Number,
 		applications_count: Number,
 		applications: Array,
@@ -61,10 +61,10 @@ export default {
 					show: true,
 				},
 				{
-					label: 'University Supervisors',
-					value: this.university_supervisors_count,
-					icon: 'identification',
-					link: route('university_supervisors.index'),
+					label: 'Students',
+					value: this.students_count,
+					icon: 'user-group',
+					link: route('students.index'),
 					show: true,
 				},
 				{

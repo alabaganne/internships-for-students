@@ -74,17 +74,6 @@ class InternshipController extends Controller
 		]);
     }
 
-    public function getCompanySupervisors() // Authenticated user must be a Company
-    {
-        return Company::find(auth()->user()->userable->id)->companySupervisors()->get()
-            ->map(function($supervisor) {
-                return [
-                    'id' => $supervisor->id,
-                    'name' => $supervisor->user->name,
-                ];
-            });
-    }
-
     public function getFields() {
         return Field::select('id', 'name')->get();
     }
@@ -92,8 +81,7 @@ class InternshipController extends Controller
     public function create()
     {
         return Inertia::render('Internships/Edit', [
-            'fields' => $this->getFields(),
-            'company_supervisors' => $this->getCompanySupervisors()
+            'fields' => $this->getFields()
         ]);
     }
 
@@ -144,12 +132,6 @@ class InternshipController extends Controller
 						'name' => $internship->company->city->name,
 					]
 				],
-				'company_supervisor' => $internship->companySupervisor ? [
-					'name' => $internship->companySupervisor->user->name,
-					'email' => $internship->companySupervisor->user->email,
-					'phone_number' => $internship->companySupervisor->user->phone_number,
-					'linkedin_profile_url' => $internship->companySupervisor->user->linkedin_profile_url
-				] : null,
 				'application' => $application ? [
 					'id' => $application->id,
 					'student_id' => $application->student_id,
@@ -163,8 +145,7 @@ class InternshipController extends Controller
     {
         return Inertia::render('Internships/Edit', [
             'internship' => $internship,
-            'fields' => $this->getFields(),
-            'company_supervisors' => $this->getCompanySupervisors()
+            'fields' => $this->getFields()
         ]);
     }
 

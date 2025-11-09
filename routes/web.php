@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\CompanySupervisorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\InternshipApplicationController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UniversitySupervisorController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -51,9 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
     // Resources
     Route::resource('internships', InternshipController::class);
     Route::resource('companies', CompanyController::class);
-    Route::resource('companies.company_supervisors', CompanySupervisorController::class);
     Route::resource('students', StudentController::class);
-    Route::resource('university_supervisors', UniversitySupervisorController::class);
     Route::resource('fields', FieldController::class);
     Route::resource('skills', SkillController::class);
     // Applications

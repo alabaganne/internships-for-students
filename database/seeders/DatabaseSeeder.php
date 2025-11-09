@@ -18,10 +18,8 @@ class DatabaseSeeder extends Seeder
             FieldSeeder::class,
             CitySeeder::class,
             CompanySeeder::class,
-            CompanySupervisorSeeder::class,
             StudentSeeder::class,
             InternshipSeeder::class,
-            UniversitySupervisorSeeder::class,
             MessageSeeder::class,
             ApplicationSeeder::class,
         ]);
@@ -45,13 +43,6 @@ class DatabaseSeeder extends Seeder
 			'phone_number' => '22652543',
             'is_admin' => true
         ]));
-        $company->companySupervisors()->saveMany(
-            \App\Models\CompanySupervisor::factory(5)->create()->each(function($supervisor) {
-                $supervisor->user()->save(User::factory()->create());
-
-                return $supervisor;
-            })
-        );
         $company->internships()->saveMany(
             \App\Models\Internship::factory(5)->create([
 				'city_id' => $company->city_id,

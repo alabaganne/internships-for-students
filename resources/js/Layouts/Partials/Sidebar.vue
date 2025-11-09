@@ -50,7 +50,7 @@ export default {
 					name: 'applications.index',
 					label: 'Applications',
 					icon: 'folder',
-					show: !this.currentUser.userable_type.includes('supervisor')
+					show: true
 				},
 				{
 					name: 'internships.index',
@@ -68,12 +68,6 @@ export default {
 					name: 'students.index',
 					label: 'Students',
 					icon: 'user-group',
-					show: true,
-				},
-				{
-					name: 'university_supervisors.index',
-					label: 'University Supervisors',
-					icon: 'identification',
 					show: true,
 				},
 				{

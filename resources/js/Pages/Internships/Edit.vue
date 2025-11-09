@@ -15,21 +15,14 @@
 						<label for="title" class="required">Title</label>
 						<input v-model="form.title" type="text" name="title" id="title" class="mt-1 form-control" />
 					</div>
-					<div class="col-span-2">
+					<div class="col-span-3">
 						<label for="field" class="required">Field of studies</label>
 						<select v-model="form.field_id" name="field" id="field" class="mt-1 form-control">
 							<option></option>
 							<option v-for="field in fields" :key="field.id" :value="field.id">{{ field.name }}</option>
 						</select>
 					</div>
-					<div class="col-span-2">
-						<label for="supervisor">Supervisor</label>
-						<select v-model="form.company_supervisor_id" name="supervisor" id="supervisor" class="mt-1 form-control">
-							<option></option>
-							<option v-for="supervisor in company_supervisors" :key="supervisor.id" :value="supervisor.id">{{ supervisor.name }}</option>
-						</select>
-					</div>
-					<div class="col-span-2">
+					<div class="col-span-3">
 						<label for="closing_at" class="required">Closing date</label>
 						<input v-model="form.closing_at" name="closing_at" id="closing_at" type="date" class="mt-1 form-control" />
 					</div>
@@ -68,10 +61,6 @@ export default {
 			type: Array,
 			required: true
 		},
-		company_supervisors: {
-			type: Array,
-			required: true
-		},
 		internship: {
 			type: Object,
 			required: false
@@ -85,7 +74,6 @@ export default {
 				attachments: "",
 				closing_at: "",
 				field_id: null,
-				company_supervisor_id: null,
 			}),
 
 			value: null,
