@@ -19,7 +19,7 @@ class DashboardController extends Controller
 
         $props = [
             'internships_count' => \App\Models\Internship::all()->count(),
-            'university_supervisors_count' => \App\Models\UniversitySupervisor::all()->count(),
+            'students_count' => \App\Models\Student::all()->count(),
             'companies_count' => \App\Models\Company::all()->count(),
         ]; 
 

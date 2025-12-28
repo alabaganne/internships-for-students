@@ -60,27 +60,6 @@
 							</delete-modal>
 						</template>
 					</div>
-					<div v-if="internship.company_supervisor" class="p-6 border-b">
-						<div class="font-semibold">Company Supervisor</div>
-						<div class="mt-4 space-y-4">
-							<div class="flex items-center">
-								<icon name="user-circle" class="h-5 w-5 text-blue-400 mr-3" />
-								{{ internship.company_supervisor.name }}
-							</div>
-							<div class="flex items-center">
-								<icon name="mail" class="h-5 w-5 text-blue-400 mr-3" />
-								{{ internship.company_supervisor.email }}
-							</div>
-							<div v-if="internship.company_supervisor.phone_number" class="flex items-center">
-								<icon name="phone" class="h-5 w-5 text-blue-400 mr-3" />
-								{{ internship.company_supervisor.phone_number }}
-							</div>
-							<div v-if="internship.company_supervisor.linkedin_profile_url" class="flex items-center">
-								<icon name="cursor-click" class="h-5 w-5 text-blue-400 mr-3" />
-								<a :href="internship.company_supervisor.linkedin_profile_url" target="_blank" class="link text-base">Linkedin profile -></a>
-							</div>
-						</div>
-					</div>
 					<inertia-link :href="route('companies.show', internship.company)" class="p-6 border-b hover:bg-gray-50 cursor-pointer block">
 						<div class="font-semibold">Company</div>
 						<div class="mt-4 space-y-4">

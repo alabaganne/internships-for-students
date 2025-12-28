@@ -19,7 +19,7 @@ class CompanyController extends Controller
     public function index()
     {
         return Inertia::render('Companies/Index', [
-            'companies' => Company::withCount('internships', 'companySupervisors')
+            'companies' => Company::withCount('internships')
 				->with('city')
 				->paginate(12)
 				->through(function ($company) {
@@ -29,7 +29,6 @@ class CompanyController extends Controller
 						'email' => $company->user->email,
 						'phone_number' => $company->user->phone_number,
 						'internships_count' => $company->internships_count,
-						'company_supervisors_count' => $company->company_supervisors_count,
 						'city' => [
 							'name' => $company->city->name,
 						]
@@ -88,17 +87,7 @@ class CompanyController extends Controller
 				'city' => [
 					'name' => $company->city->name,
 				],
-				'internships' => InternshipResource::collection($company->internships()->latest()->paginate(10)),
-				'supervisors' => $company->companySupervisors->transform(function ($companySupervisor) {
-					return [
-						'id' => $companySupervisor->id,
-						'user_id' => $companySupervisor->user->id,
-						'name' => $companySupervisor->user->name,
-						'email' => $companySupervisor->user->email,
-						'image' => $companySupervisor->user->image,
-						'phone_number' => $companySupervisor->user->phone_number,
-					];
-				})
+				'internships' => InternshipResource::collection($company->internships()->latest()->paginate(10))
 			]
         ]);
     }
