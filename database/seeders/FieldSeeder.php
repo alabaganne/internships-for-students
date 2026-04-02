@@ -3,16 +3,29 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FieldSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        \App\Models\Field::factory(10)->create();
+        $fields = [
+            'Software Engineering',
+            'Data Science & AI',
+            'Cybersecurity',
+            'Network & Systems',
+            'Web Development',
+            'Mobile Development',
+            'UI/UX Design',
+            'DevOps & Cloud',
+            'Embedded Systems',
+            'Business Intelligence',
+            'Digital Marketing',
+            'Finance & Accounting',
+        ];
+
+        foreach ($fields as $field) {
+            DB::table('fields')->insert(['name' => $field]);
+        }
     }
 }
